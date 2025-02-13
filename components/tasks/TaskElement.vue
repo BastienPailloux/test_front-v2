@@ -1,11 +1,11 @@
 <template>
   <BaseModal v-if="isEditing" @close="closeModal">
     <template #header>
-      <h2>📝 Modifier {{ currentTask.title }}</h2>
+      <h2>📝 Modifier {{ editableTask.title }}</h2>
     </template>
     <template #content>
-      <input type="text" v-model="editableTask.title" />
-      <textarea v-model="editableTask.description" />
+      <BaseInput label="Titre" type="text" v-model="editableTask.title" />
+      <BaseInput label="Description" type="text" inputSize="large" v-model="editableTask.description" />
       <BaseButton type="button" @click="handleSave">Valider</BaseButton>
     </template>
   </BaseModal>
@@ -42,7 +42,7 @@ const handleCheck = async () => {
 }
 
 const openModal = () => {
-  editableTask.value = { ...task }
+  editableTask.value = { ...currentTask.value }
   isEditing.value = true
 }
 

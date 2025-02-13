@@ -18,10 +18,15 @@ export const useTasksStore = defineStore('tasks', () => {
     }
   }
 
-  const updateTask = async (task: Task) => {
+  const updateTask = async (updatedTask: Task) => {
     try {
-      const updatedTask = await api.task.put(task)
-      return updatedTask
+      const result = await api.task.put(updatedTask)
+
+      const index = tasks.value.findIndex(t => t.id === updatedTask.id)
+      if (index !== -1) {
+        tasks.value.splice(index, 1, result)
+      }
+      return result
     }
     catch (error) {
       console.error(error)
