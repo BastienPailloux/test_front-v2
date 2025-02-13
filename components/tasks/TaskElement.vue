@@ -12,7 +12,7 @@
       </div>
     </template>
   </BaseModal>
-  <BaseCard @click="openModal" class="cursor-pointer">
+  <BaseCard @click="openModal" :class="{ 'dimmed': currentTask.completed, 'cursor-pointer': !isEditing }">
     <div class="baseline">
       <input type="checkbox" :checked="currentTask.completed" @click.stop @change="handleCheck" />
       <h3>{{ currentTask.title }}</h3>
@@ -40,7 +40,7 @@ const isEditing = ref(false)
 const editableTask = ref({ ...task })
 
 const handleCheck = async () => {
-  const updatedTask = { ...task, completed: !task.completed }
+  const updatedTask = { ...currentTask.value, completed: !currentTask.value.completed }
   await tasksStore.updateTask(updatedTask)
 }
 
