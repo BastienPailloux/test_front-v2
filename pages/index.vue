@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import TheHeader from '~/components/layout/TheHeader.vue'
 import StoredTasks from '~/components/tasks/StoredTasks.vue'
-import AddTaskCard from '~/components/tasks/AddTaskCard.vue';
+import AddTaskCard from '~/components/tasks/AddTaskCard.vue'
 </script>
 
 <style>
