@@ -24,6 +24,7 @@ const isLoading = ref(true)
 onMounted(async () => {
   await tasksStore.fetchTasks()
   isLoading.value = false
+  console.log('taches récupérées:', tasks)
 })
 </script>
 
