@@ -1,44 +1,73 @@
-## Énoncé de Test Technique
+# Application de Gestion de Tâches
 
-### Contexte
+## Aperçu
 
-Vous êtes chargé de créer une application de gestion de tâches sous forme de "to-do list" en utilisant les frameworks Vue.js et Nuxt.js. Ce test ne doit pas durer plus de 3h, et si vous n’avez pas terminé ce n’est pas grave nous aurons le temps de débriefer ensemble.
+Ceci est une application de gestion de tâches (to-do list) développée avec **Vue.js** et **Nuxt.js**.  
+Elle permet aux utilisateurs de :
+- **Lister** les tâches
+- **Marquer** une tâche comme terminée (ce qui modifie l'apparence de la carte)
+- **Modifier** le titre et la description d’une tâche
+- **Créer** une nouvelle tâche
+- **Supprimer** une tâche
 
-### Objectif
+L'application communique avec une API locale (située dans le dossier `/server/api`) via un composable personnalisé nommé `useApi`.
 
-Votre application doit évoluer d'une simple liste de tâches vers une solution plus complexe, intégrant plusieurs fonctionnalités. Vous serez évalué sur :
+## Fonctionnalités
 
-- **Connaissance de Vue et Nuxt** : Votre capacité à utiliser ces technologies, compte tenu de votre expérience dans ces frameworks.
-- **Organisation, scalabilité et maintenabilité du code** : La structure de votre projet, l'utilisation de bonnes pratiques de développement et la facilité avec laquelle votre code pourrait être lu, étendu ou maintenu.
-- **Compétences en développement front-end** : La capacité à concevoir des composants réactifs et performants.
+- **Liste des tâches** : Affichage de toutes les tâches dans une interface claire et conviviale.
+- **Marquage de tâches complétées** : En cochant une tâche, celle-ci se transforme.
+- **Modification** : Modifier le titre et la description d'une tâche via une modale.
+- **Création** : Ajouter une nouvelle tâche simplement uniquement avec son titre.
+- **Suppression** : Supprimer une tâche directement .
 
-### Build Setup
-Clonez ce repository, puis à la racine du projet :
+## Installation
+
+Clonez ce dépôt et installez les dépendances :
+
 ```bash
-# install dependencies
-$ yarn install
+# Cloner le repository
+git clone https://github.com/BastienPailloux/test_front-v2.git
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+# Se déplacer dans le dossier du projet
+cd test_front-v2
+
+# Installer les dépendances
+yarn install
 ```
-⚠️ Veillez à avoir une version de node >=18
 
-### Consigne 1 : Fonctionnalités de base
+## Lancement de l'Application
 
-Votre application doit inclure les fonctionnalités suivantes, mises en œuvre dans une interface offrant une expérience utilisateur claire et fonctionnelle :
+Démarrez le serveur de développement avec rechargement à chaud :
 
-1. Lister les tâches
-2. Marquer une tâche comme terminée
-3. Modifier le titre et la description d’une tâche
-4. Créer une nouvelle tâche
-5. Supprimer une tâche
+```bash
+yarn dev
+````
 
-Dans ce projet, vous allez manipuler des données via des appels API réalisés à l'aide d'un composable nommé `useApi`. Ce composable est conçu pour simplifier l'interaction avec l'API locale, dont les endpoints sont situés dans le dossier `/server/api` du projet.
+Ensuite, ouvrez votre navigateur à l'adresse http://localhost:3000.
+Note : Assurez-vous d'avoir Node.js version 18 ou supérieure.
 
-### Consigne 2 : Fonctionnalités améliorées
+## Structure du Projet
 
-À partir de l’interface produite dans la consigne 1, vous proposerez et implémenterez une ou plusieurs fonctionnalités qui permettent d’améliorer l’interface et l’expérience. C’est le moment de faire parler votre créativité ! 
+* **/components** : Composants Vue pour la mise en page, les tâches, les modales, etc.
+  * **/layout** :  Composants faisant partie de la structure du site
+  * **/UI**: Composants réutilisables et modulables favorisant un design harmonieux
+  * **/tasks**: Composants spécifiques à la gestion des tâches 
+* **/composables** : Composables réutilisables (par exemple, useApi pour simplifier les appels API).
+* **/server/api** : Endpoints API utilisés par l'application pour gérer les tâches.
+* **/assets/css** : Styles globaux et variables CSS.
+* **/store** : Configuration du store Pinia pour la gestion des tâches.
 
-### Livrables
+## Intégration API
 
-Créez une nouvelle branche “votre_nom” + _test sur le repository. Quand c’est terminé, créez une pull-request et demandez une review.
+L'application utilise un composable personnalisé useApi pour interagir avec l'API locale.
+Consultez le dossier /server/api pour voir comment les endpoints sont structurés.
+
+## Améliorations Futures
+
+* **UI/UX** : Ajout d'animations (par exemple, un feu d'artifice lors de la complétion d'une tâche), amélioration du design responsive et intégration d'un drag and drop pour modifier l'ordre.
+* **Fonctionnalités supplémentaires** : Filtrage, tri, recherche des tâches, ajout de date de complétion ou encore ajout de la personne responsable.
+* **Optimisation du code** : Refactorisation des composants et meilleure gestion des erreurs pour une application prête pour la production.
+
+## Notes
+
+Ce projet a été développé dans le cadre d'un test technique. Certaines fonctionnalités ont été simplifiées, et des améliorations pourront être discutées lors de la revue.
