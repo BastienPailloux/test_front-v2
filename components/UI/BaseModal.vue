@@ -1,14 +1,24 @@
 <template>
-  <div />
+  <div @click="close" />
   <dialog open>
     <header>
       <slot name="header" />
     </header>
     <section>
-      <slot />
+      <slot name="content"/>
     </section>
   </dialog>
 </template>
+
+<script setup lang="ts">
+const emit = defineEmits<{
+  (e: 'close'): void
+}>()
+
+const close = () => {
+  emit('close')
+}
+</script>
 
 <style scoped>
   div {
@@ -23,17 +33,19 @@
 
   dialog {
     position: fixed;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 1rem;
     background-color: white;
     border-radius: 0.5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    z-index: 20;
   }
 
   header {
     display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 0.5rem 1rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -41,7 +53,10 @@
   }
 
   section {
+    display: flex;
+    flex-direction: column;
     padding: 1rem;
+
   }
 
   @media (min-width: 768px) {

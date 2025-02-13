@@ -20,7 +20,8 @@ export const useTasksStore = defineStore('tasks', () => {
 
   const updateTask = async (task: Task) => {
     try {
-      await api.task.put(task)
+      const updatedTask = await api.task.put(task)
+      return updatedTask
     }
     catch (error) {
       console.error(error)
