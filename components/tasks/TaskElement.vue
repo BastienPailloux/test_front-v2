@@ -6,7 +6,7 @@
     <template #content>
       <input type="text" v-model="editableTask.title" />
       <textarea v-model="editableTask.description" />
-      <button @click="handleSave">Valider</button>
+      <BaseButton type="button" @click="handleSave">Valider</BaseButton>
     </template>
   </BaseModal>
   <BaseCard @click="openModal" class="cursor-pointer">

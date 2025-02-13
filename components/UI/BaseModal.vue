@@ -36,11 +36,11 @@ const close = () => {
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 1rem;
     background-color: white;
     border-radius: 0.5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     z-index: 20;
+    overflow: hidden;
   }
 
   header {
@@ -48,7 +48,6 @@ const close = () => {
     flex-direction: column;
     align-items: center;
     padding: 0.5rem 1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     background: linear-gradient(to bottom, var(--color-primary), white);
   }
 

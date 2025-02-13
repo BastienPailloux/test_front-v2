@@ -1,11 +1,6 @@
 <template>
   <TheHeader />
   <div class="max-w-screen-md mx-auto p-5">
-    <BaseCard>
-      <h2>📝 Add a new task</h2>
-      <input type="text" placeholder="Task name" />
-      <button>Add Task</button>
-    </BaseCard>
     <StoredTasks />
   </div>
 </template>
