@@ -6,7 +6,10 @@
     <template #content>
       <BaseInput label="Titre" type="text" v-model="editableTask.title" />
       <BaseInput label="Description" type="text" inputSize="large" v-model="editableTask.description" />
-      <BaseButton type="button" @click="handleSave">Valider</BaseButton>
+      <div class="buttons-conteiner">
+        <BaseButton type="button" color="red" @click="handleDelete">Supprimer</BaseButton>
+        <BaseButton type="button" color="primary" @click="handleSave">Valider</BaseButton>
+      </div>
     </template>
   </BaseModal>
   <BaseCard @click="openModal" class="cursor-pointer">
@@ -76,5 +79,11 @@ h3 {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.buttons-conteiner {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
 }
 </style>

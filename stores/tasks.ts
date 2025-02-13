@@ -36,7 +36,7 @@ export const useTasksStore = defineStore('tasks', () => {
     try {
       const result = await api.task.put(updatedTask)
 
-      const index = tasks.value.findIndex(t => t.id === updatedTask.id)
+      const index = tasks.value.findIndex(t => t.createdAt === updatedTask.createdAt)
       if (index !== -1) {
         tasks.value.splice(index, 1, result)
       }
