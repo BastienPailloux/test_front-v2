@@ -8,3 +8,12 @@
 
 <script setup lang="ts">
 </script>
+
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: var(--font-primary);
+  }
+</style>
