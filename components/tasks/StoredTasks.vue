@@ -31,4 +31,13 @@ onMounted(async () => {
 div {
   margin: 2rem 5rem;
 }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 1rem;
+}
 </style>

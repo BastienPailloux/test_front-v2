@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { ref } from 'vue'
 
 import { useApi } from '~/composables/useApi.composable'
 
@@ -11,7 +12,20 @@ export const useTasksStore = defineStore('tasks', () => {
   const fetchTasks = async () => {
     try {
       const result = await api.task.getAll()
-      tasks.value = result
+      tasks.value = result.sort((a, b) => b.id - a.id)
+    }
+    catch (error) {
+      console.error(error)
+    }
+  }
+
+  const createTask = async (newTask: Partial<Task>) => {
+    try {
+      console.log(newTask)
+      const result = await api.task.post(newTask)
+      console.log(result)
+      tasks.value.unshift(result)
+      return result
     }
     catch (error) {
       console.error(error)
@@ -36,6 +50,7 @@ export const useTasksStore = defineStore('tasks', () => {
   return {
     tasks,
     fetchTasks,
+    createTask,
     updateTask,
   }
 })
