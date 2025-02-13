@@ -6,13 +6,14 @@
       <input type="text" placeholder="Task name" />
       <button>Add Task</button>
     </BaseCard>
+    <StoredTasks />
   </div>
 </template>
 
 <script setup lang="ts">
 import BaseCard from '~/components/UI/BaseCard.vue'
-
 import TheHeader from '~/components/layout/TheHeader.vue'
+import StoredTasks from '~/components/tasks/StoredTasks.vue'
 </script>
 
 <style>
