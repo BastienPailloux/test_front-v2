@@ -9,14 +9,19 @@
 </template>
 
 <script lang="ts" setup>
-import type { Task } from '~/types/Task';
+import type { Task } from '~/types/Task'
+
+import { useTasksStore } from '~/stores/tasks'
+
+const tasksStore = useTasksStore()
 
 const { task } = defineProps<{
   task: Task
 }>()
 
-const handleCheck = () => {
-  console.log('checked')
+const handleCheck = async () => {
+  const updatedTask = { ...task, completed: !task.completed }
+  await tasksStore.updateTask(updatedTask)
 }
 </script>
 
