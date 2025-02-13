@@ -9,7 +9,8 @@ export const useTasksStore = defineStore('tasks', () => {
   const tasks = ref<Task[]>([])
 
   const fetchTasks = async () => {
-    tasks.value = await api.task.getAll()
+    const result = await api.task.getAll()
+    tasks.value = result
   }
 
   return {

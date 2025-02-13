@@ -30,4 +30,11 @@ export default defineNuxtConfig({
       /* other redis connector options */
     },
   },
+  components: [
+    {
+      path: '~/components/UI',
+      prefix: '',
+    },
+
+  ],
 })
