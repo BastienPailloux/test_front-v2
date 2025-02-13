@@ -4,7 +4,7 @@
   <textarea
     v-if="inputSize === 'large' && type === 'text'"
     :value="modelValue"
-    @input="updateModelValue($event.target.value)"
+    @input="updateModelValue(($event.target as HTMLTextAreaElement).value)"
     rows="5"
     style="resize: vertical;">
   </textarea>
@@ -13,16 +13,18 @@
     v-else
     :type="type"
     :value="modelValue"
-    @input="updateModelValue($event.target.value)" />
+    @input="updateModelValue(($event.target as HTMLInputElement).value)" />
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
+const { label, type, modelValue, inputSize } = withDefaults(defineProps<{
   label?: string
   type?: 'text' | 'password' | 'email' | 'number'
-  inputSize?: 'small' | 'large'
   modelValue: string
-}>()
+  inputSize?: 'small' | 'large'
+}>(), {
+  modelValue: '',
+})
 
 const emit = defineEmits<{
   (event: 'update:modelValue', value: string): void

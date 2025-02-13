@@ -1,8 +1,10 @@
 <template>
-  <TheHeader />
-  <div class="max-w-screen-md mx-auto p-5">
-    <AddTaskCard />
-    <StoredTasks />
+  <div>
+    <TheHeader />
+    <div class="max-w-screen-md mx-auto p-5">
+      <AddTaskCard />
+      <StoredTasks />
+    </div>
   </div>
 </template>
 
