@@ -10,14 +10,17 @@
         placeholder="Nom de la tâche"
         v-model="newTaskTitle"
       />
-      <BaseButton @click="addTask">Créer</BaseButton>
+      <div class="containerButtons">
+        <FontAwesomeIcon :icon="faClose" class="canceButton" @click="cancelAdd" />
+        <BaseButton type="button" color="primary" @click="addTask" >Créer</BaseButton>
+      </div>
     </div>
   </BaseCard>
 </template>
 
 <script setup lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faClose } from '@fortawesome/free-solid-svg-icons'
 
 import { useTasksStore } from '~/stores/tasks'
 
@@ -41,6 +44,11 @@ const addTask = async () => {
     console.error(error)
   }
 }
+
+const cancelAdd = () => {
+  newTaskTitle.value = ''
+  isCreating.value = false
+}
 </script>
 
 <style scoped>
@@ -57,5 +65,17 @@ input:focus {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+}
+
+.containerButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.canceButton {
+  font-size: 2rem;
+  cursor: pointer;
 }
 </style>
