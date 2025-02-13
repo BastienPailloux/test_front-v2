@@ -64,6 +64,17 @@ const handleSave = async () => {
     console.error(error)
   }
 }
+
+const handleDelete = async () => {
+  try {
+    await tasksStore.deleteTask(editableTask.value)
+    isEditing.value = false
+  }
+  catch (error) {
+    // TODO: Handle error
+    console.error(error)
+  }
+}
 </script>
 
 <style scoped>

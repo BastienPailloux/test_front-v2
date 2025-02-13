@@ -47,10 +47,24 @@ export const useTasksStore = defineStore('tasks', () => {
     }
   }
 
+  const deleteTask = async (task: Task) => {
+    try {
+      await api.task.delete(task.id)
+      const index = tasks.value.findIndex(t => t.createdAt === task.createdAt)
+      if (index !== -1) {
+        tasks.value.splice(index, 1)
+      }
+    }
+    catch (error) {
+      console.error(error)
+    }
+  }
+
   return {
     tasks,
     fetchTasks,
     createTask,
     updateTask,
+    deleteTask,
   }
 })
